@@ -92,4 +92,4 @@ def find_best_move(color, prev_pos):
     find_best_move(color, prev_pos)
 
 
-find_best_move("w", prev_pos)
+find_best_move("b", prev_pos)
