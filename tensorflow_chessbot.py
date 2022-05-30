@@ -1,42 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-#
-# TensorFlow Chessbot
-# This contains ChessboardPredictor, the class responsible for loading and
-# running a trained CNN on chessboard screenshots. Used by chessbot.py.
-# A CLI interface is provided as well.
-#
-#   $ ./tensorflow_chessbot.py -h
-#   usage: tensorflow_chessbot.py [-h] [--url URL] [--filepath FILEPATH]
-# 
-#    Predict a chessboard FEN from supplied local image link or URL
-# 
-#    optional arguments:
-#      -h, --help           show this help message and exit
-#      --url URL            URL of image (ex. http://imgur.com/u4zF5Hj.png)
-#     --filepath FILEPATH  filepath to image (ex. u4zF5Hj.png)
-# 
-# This file is used by chessbot.py, a Reddit bot that listens on /r/chess for 
-# posts with an image in it (perhaps checking also for a statement 
-# "white/black to play" and an image link)
-# 
-# It then takes the image, uses some CV to find a chessboard on it, splits it up
-# into a set of images of squares. These are the inputs to the tensorflow CNN
-# which will return probability of which piece is on it (or empty)
-# 
-# Dataset will include chessboard squares from chess.com, lichess
-# Different styles of each, all the pieces
-# 
-# Generate synthetic data via added noise:
-#  * change in coloration
-#  * highlighting
-#  * occlusion from lines etc.
-# 
-# Take most probable set from TF response, use that to generate a FEN of the
-# board, and bot comments on thread with FEN and link to lichess analysis.
-# 
-# A lot of tensorflow code here is heavily adopted from the 
-# [tensorflow tutorials](https://www.tensorflow.org/versions/0.6.0/tutorials/pdes/index.html)
+
 
 import os
 

@@ -1,11 +1,6 @@
-#!/usr/bin/env python
-# ChessFenBot daemon
-# Finds submissions with chessboard images in them,
-# use a tensorflow convolutional neural network to predict pieces and return
-# a lichess analysis link and FEN diagram of chessboard
-# Run with --dry to dry run without actual submissions
+
 from __future__ import print_function
-import praw
+
 import requests
 import socket
 import time

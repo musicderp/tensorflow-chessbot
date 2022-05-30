@@ -11,8 +11,7 @@ from PyQt4.QtNetwork import *
 # 
 import webkit2png
 
-######################################################3
-# For scraping website screenshots
+
 class Options():
   url = None
   output_filename = None

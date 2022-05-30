@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 # From https://tensorflow.googlesource.com/tensorflow/+/master/tensorflow/examples/tutorials/mnist/input_data.py
 class DataSet(object):
   def __init__(self, images, labels, dtype=tf.float32):

@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Generate graph.pb and graph.pbtxt
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1' # Ignore Tensorflow INFO debug messages
@@ -94,11 +91,7 @@ print("\t Model restored.")
 # Write graph in text format
 tf.train.write_graph(sess.graph_def,output_graphtxt[0], output_graphtxt[1])
 
-# To freeze graph then use:
-# python3 -m tensorflow.python.tools.freeze_graph --input_graph graph.pbtxt --input_checkpoint=model_10000.ckpt  --input_binary=false --output_graph=actual_frozen.pb --output_node_names=prediction,probabilities
 
-# We also save the binary-encoded graph that may or may not be frozen (TBD) below.
-# We use a built-in TF helper to export variables to constants
 output_graph_def = tf.graph_util.convert_variables_to_constants(
     sess, # The session is used to retrieve the weights
     tf.get_default_graph().as_graph_def(), # The graph_def is used to retrieve the nodes 

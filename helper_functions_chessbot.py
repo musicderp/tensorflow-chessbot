@@ -1,13 +1,9 @@
-# -*- coding: utf-8 -*-
-# 
-# Helper functions for the reddit chessbot
-# Includes functions to parse FEN strings and get pithy quotes
+
 import re
 from helper_functions import lengthenFEN
 from message_template import *
 
-#########################################################
-# ChessBot Message Generation Functions
+
 
 def isPotentialChessboardTopic(sub):
   """if url is imgur link, or url ends in .png/.jpg/.gif"""

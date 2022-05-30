@@ -1,20 +1,4 @@
-#!/usr/bin/env python3
-#
-# usage: tileset_generator.py [-h] input_folder output_folder
 
-# Generate tile images for alll chessboard images in input folder
-
-# positional arguments:
-#   input_folder   Input image folder
-#   output_folder  Output tile folder
-
-# optional arguments:
-#   -h, --help     show this help message and exit
-
-# Pass an input folder and output folder
-# Builds tile images for each chessboard image in input folder and puts
-# in the output folder
-# Used for building training datasets
 from chessboard_finder import *
 import os
 import glob

@@ -1,18 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Pass in image of online chessboard screenshot, returns corners of chessboard
-# usage: chessboard_finder.py [-h] urls [urls ...]
 
-# Find orthorectified chessboard corners in image
-
-# positional arguments:
-#   urls        Input image urls
-
-# optional arguments:
-#   -h, --help  show this help message and exit
-
-
-# sudo apt-get install libatlas-base-dev for numpy error, see https://github.com/Kitt-AI/snowboy/issues/262
 import numpy as np
 # sudo apt-get install libopenjp2-7 libtiff5
 import PIL.Image
@@ -411,15 +397,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Find orthorectified chessboard corners in image')
   parser.add_argument('urls', default=['https://i.redd.it/1uw3h772r0fy.png'],
     metavar='urls', type=str,  nargs='*', help='Input image urls')
-  # main('http://www.chessanytime.com/img/jeudirect/simplechess.png')
-  # main('https://i.imgur.com/JpzfV3y.jpg')
-  # main('https://i.imgur.com/jsCKzU9.jpg')
-  # main('https://i.imgur.com/49htmMA.png')
-  # main('https://i.imgur.com/HHdHGBX.png')
-  # main('http://imgur.com/By2xJkO')
-  # main('http://imgur.com/p8DJMly')
-  # main('https://i.imgur.com/Ns0iBrw.jpg')
-  # main('https://i.imgur.com/KLcCiuk.jpg')
+
   args = parser.parse_args()
   for url in args.urls:
     main(url)
