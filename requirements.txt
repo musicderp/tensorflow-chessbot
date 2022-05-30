@@ -1,0 +1,10 @@
+beautifulsoup4>=4.6.3,<5
+lxml>=4.2.4,<5
+Pillow~=9.1.1
+tensorflow~=2.9.1
+requests<3,>=2.21.0
+
+stockfish~=3.24.0
+numpy~=1.22.4
+bs4~=0.0.1
+
