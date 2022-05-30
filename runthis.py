@@ -1,5 +1,5 @@
 import time
-
+import random
 import tensorflow_chessbot
 from stockfish import Stockfish
 import cv2
@@ -8,12 +8,12 @@ import pyautogui as pg
 import chess
 
 # EDIT THIS WITH YOUR OWN VALUES
-BOARD_SIZE = 784
+BOARD_SIZE = 2402-1336
 CELL_SIZE = int(BOARD_SIZE / 8)
-BOARD_TOP_COORD = 124
-BOARD_LEFT_COORD = 952
+BOARD_TOP_COORD = 146
+BOARD_LEFT_COORD = 1336
 
-stockfish = Stockfish(path='Stockfish/stockfish_15_x64_avx2.exe', parameters={"Threads": 24, "Hash": 10000, "Ponder": True})
+stockfish = Stockfish(path='Stockfish/stockfish_15_x64_avx2.exe', parameters={"Threads": 8, "Hash": 10000, "Ponder": True, "Contempt": 20, "Minimum Thinking Time": 50})
 print(stockfish.get_parameters())
 
 x = BOARD_LEFT_COORD
@@ -37,9 +37,12 @@ for row in range(8):
     y += CELL_SIZE
 
 prev_pos = ""
+global move_counter
+move_counter = 0
 
 
 def find_best_move(color, prev_pos):
+    global move_counter
     get_square = [
         'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8',
         'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
@@ -67,7 +70,11 @@ def find_best_move(color, prev_pos):
         print("analyzing position")
         stockfish.set_fen_position(position[0])
 
-        best_move = stockfish.get_best_move()
+        if move_counter <= 8:
+            best_move = stockfish.get_best_move()
+        else:
+            yomama = random.randint(0, 10000)
+            best_move = stockfish.get_best_move_time(yomama)
         print(best_move)
         screenshot = cv2.cvtColor(np.array(pg.screenshot()), cv2.COLOR_RGB2BGR)
         crop_img = screenshot[BOARD_TOP_COORD:BOARD_TOP_COORD + BOARD_SIZE,
@@ -86,20 +93,21 @@ def find_best_move(color, prev_pos):
             to_sq = square_to_coords[get_square.index(best_move[2] + best_move[3])]
 
             # make move on board
-            pg.moveTo(from_sq, duration=.1)
+            pg.moveTo(from_sq)
             pg.click()
-            pg.moveTo(to_sq, duration=.1)
+            pg.moveTo(to_sq)
             pg.click()
         else:
             print("position mismatch, trying again")
             find_best_move(color, prev_pos)
+        move_counter += 1
     else:
         temp = position[0].split(" ")
         prev_pos = temp[0]
         print("position is same")
 
     # wait for 3 seconds
-    time.sleep(.4)
+    # time.sleep(.4)
     find_best_move(color, prev_pos)
 
 
